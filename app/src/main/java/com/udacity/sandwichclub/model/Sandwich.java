@@ -15,6 +15,7 @@ public class Sandwich {
      * No args constructor for use in serialization
      */
     public Sandwich() {
+
     }
 
     public Sandwich(String mainName, List<String> alsoKnownAs, String placeOfOrigin, String description, String image, List<String> ingredients) {
@@ -30,47 +31,30 @@ public class Sandwich {
         return mainName;
     }
 
-    public void setMainName(String mainName) {
-        this.mainName = mainName;
-    }
-
-    public List<String> getAlsoKnownAs() {
-        return alsoKnownAs;
-    }
-
-    public void setAlsoKnownAs(List<String> alsoKnownAs) {
-        this.alsoKnownAs = alsoKnownAs;
-    }
-
     public String getPlaceOfOrigin() {
         return placeOfOrigin;
-    }
-
-    public void setPlaceOfOrigin(String placeOfOrigin) {
-        this.placeOfOrigin = placeOfOrigin;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getImage() {
         return image;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+    public String getIngredientsAsString() { return joinArrayList(this.ingredients); }
+    public String getAlsoKnownAsAsString() { return joinArrayList(this.alsoKnownAs); }
 
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
+    private String joinArrayList(List<String> al) {
+        if(al.size()>0) {
+            StringBuilder sb = new StringBuilder();
+            for (String s : al) {
+                sb.append(s);
+                sb.append(", ");
+            }
+            sb.substring(0, sb.length() - 1);
+            return sb.toString();
+        } else return "";
     }
 }
